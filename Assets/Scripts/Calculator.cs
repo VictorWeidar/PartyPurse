@@ -93,18 +93,58 @@ public class Calculator : MonoBehaviour {
         if (_dropdown.value == 0)
         {
             Number = Convert.ToInt32(NumberText);
+            _UIScript.CPTotal += Number;
 
-            _UIScript.CPText.text += Number.ToString();
+            Debug.Log("Copper Added: " + Number);
         }
+
+        if (_dropdown.value == 1)
+        {
+            Number = Convert.ToInt32(NumberText);
+            _UIScript.SPTotal += Number;
+
+            Debug.Log("Silver Added: " + Number);
+        }
+
+        if (_dropdown.value == 2)
+        {
+            Number = Convert.ToInt32(NumberText);
+            _UIScript.EPTotal += Number;
+
+            Debug.Log("Elektrum Added: " + Number);
+        }
+
+        if (_dropdown.value == 3)
+        {
+            Number = Convert.ToInt32(NumberText);
+            _UIScript.GPTotal += Number;
+
+            Debug.Log("Gold Added: " + Number);
+        }
+
+        if (_dropdown.value == 4)
+        {
+            Number = Convert.ToInt32(NumberText);
+            _UIScript.PPTotal += Number;
+
+            Debug.Log("Platinum Added: " + Number);
+        }
+
+        _UIScript.EditPanel.SetActive(false);
+        OnButtonClear();
     }
 
     public void OnButtonSubtract()
     {
 
+
+        _UIScript.EditPanel.SetActive(false);
+        OnButtonClear();
     }
 
     public void OnButtonClear()
     {
         NumberText = "";
+        Number = 0;
     }
 }

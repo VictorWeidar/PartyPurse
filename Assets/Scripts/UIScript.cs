@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System;
 
 public class UIScript : MonoBehaviour {
 
@@ -17,6 +18,13 @@ public class UIScript : MonoBehaviour {
     public Text EPText;
     public Text GPText;
     public Text PPText;
+
+
+    public int CPTotal;
+    public int SPTotal;
+    public int EPTotal;
+    public int GPTotal;
+    public int PPTotal;
 
     [Header("Panels")]
     public GameObject EditPanel;
@@ -37,6 +45,22 @@ public class UIScript : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-		
-	}
+        CPText.text = CPTotal.ToString();
+        SPText.text = SPTotal.ToString();
+        EPText.text = EPTotal.ToString();
+        GPText.text = GPTotal.ToString();
+        PPText.text = PPTotal.ToString();
+    }
+
+    public void OnButtonEdit()
+    {
+        EditPanel.SetActive(true);
+    }
+
+    public void OnBack()
+    {
+        EditPanel.SetActive(false);
+        HelpPanel.SetActive(false);
+        AboutPanel.SetActive(false);
+    }
 }
