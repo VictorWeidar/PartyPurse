@@ -36,6 +36,12 @@ public class Calculator : MonoBehaviour {
     void Update()
     {
         _Numbertext.text = NumberText;
+
+        if (NumberText.Length > 9)
+        {
+            _UIScript.WarningPanel.SetActive(true);
+            OnButtonClear();
+        }
     }
 
     public void OnButton1()
@@ -90,12 +96,15 @@ public class Calculator : MonoBehaviour {
 
     public void OnButtonAdd()
     {
+
         if (_dropdown.value == 0)
         {
             Number = Convert.ToInt32(NumberText);
             _UIScript.CPTotal += Number;
 
             Debug.Log("Copper Added: " + Number);
+
+            PlayerPrefs.SetInt("CopperTotal", _UIScript.CPTotal);
         }
 
         if (_dropdown.value == 1)
@@ -104,6 +113,8 @@ public class Calculator : MonoBehaviour {
             _UIScript.SPTotal += Number;
 
             Debug.Log("Silver Added: " + Number);
+
+            PlayerPrefs.SetInt("SilverTotal", _UIScript.SPTotal);
         }
 
         if (_dropdown.value == 2)
@@ -112,6 +123,8 @@ public class Calculator : MonoBehaviour {
             _UIScript.EPTotal += Number;
 
             Debug.Log("Elektrum Added: " + Number);
+
+            PlayerPrefs.SetInt("ElektrumTotal", _UIScript.EPTotal);
         }
 
         if (_dropdown.value == 3)
@@ -120,6 +133,8 @@ public class Calculator : MonoBehaviour {
             _UIScript.GPTotal += Number;
 
             Debug.Log("Gold Added: " + Number);
+
+            PlayerPrefs.SetInt("GoldTotal", _UIScript.GPTotal);
         }
 
         if (_dropdown.value == 4)
@@ -128,6 +143,9 @@ public class Calculator : MonoBehaviour {
             _UIScript.PPTotal += Number;
 
             Debug.Log("Platinum Added: " + Number);
+
+            PlayerPrefs.SetInt("PlatinumTotal", _UIScript.PPTotal);
+
         }
 
         _UIScript.EditPanel.SetActive(false);
@@ -136,7 +154,55 @@ public class Calculator : MonoBehaviour {
 
     public void OnButtonSubtract()
     {
+        if (_dropdown.value == 0)
+        {
+            Number = Convert.ToInt32(NumberText);
+            _UIScript.CPTotal -= Number;
 
+            Debug.Log("Copper Subtracted: " + Number);
+
+            PlayerPrefs.SetInt("CopperTotal", _UIScript.CPTotal);
+        }
+
+        if (_dropdown.value == 1)
+        {
+            Number = Convert.ToInt32(NumberText);
+            _UIScript.SPTotal -= Number;
+
+            Debug.Log("Silver Subtracted: " + Number);
+
+            PlayerPrefs.SetInt("SilverTotal", _UIScript.SPTotal);
+        }
+
+        if (_dropdown.value == 2)
+        {
+            Number = Convert.ToInt32(NumberText);
+            _UIScript.EPTotal -= Number;
+
+            Debug.Log("Elektrum Subtracted: " + Number);
+
+            PlayerPrefs.SetInt("ElektrumTotal", _UIScript.EPTotal);
+        }
+
+        if (_dropdown.value == 3)
+        {
+            Number = Convert.ToInt32(NumberText);
+            _UIScript.GPTotal -= Number;
+
+            Debug.Log("Gold Subtracted: " + Number);
+
+            PlayerPrefs.SetInt("GoldTotal", _UIScript.GPTotal);
+        }
+
+        if (_dropdown.value == 4)
+        {
+            Number = Convert.ToInt32(NumberText);
+            _UIScript.PPTotal -= Number;
+
+            Debug.Log("Platinum Subtracted: " + Number);
+
+            PlayerPrefs.SetInt("PlatinumTotal", _UIScript.PPTotal);
+        }
 
         _UIScript.EditPanel.SetActive(false);
         OnButtonClear();
